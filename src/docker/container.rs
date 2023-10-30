@@ -1,6 +1,6 @@
 use std::rc::Rc;
 
-use bollard::Docker;
+use bollard::{Docker, container::LogsOptions};
 
 struct Container {
     pub name: String,

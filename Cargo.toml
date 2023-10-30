@@ -6,9 +6,10 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-bollard = "0.14.0"
+bollard = { version = "0.14.0", features = ["ssl"] }
 delegate = "0.10.0"
 envy = "0.4.2"
+hyper = "0.14.27"
 log = "0.4.19"
 poise = "0.5.5"
 serde = "1.0.179"
