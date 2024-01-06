@@ -1,11 +1,11 @@
-use std::rc::Rc;
+use std::sync::Arc;
 
 pub struct EventDispatcher<O: Clone> {
-    peripherals: Vec<Rc<dyn EventHandler<Event = O>>>
+    peripherals: Vec<Arc<dyn EventHandler<O>>>
 }
 
 impl<O> EventDispatcher<O> where O: Clone {
-    pub fn register(&mut self, peripheral: Rc<dyn EventHandler<Event = O>>) {
+    pub fn register(&mut self, peripheral: Arc<dyn EventHandler<O>>) {
         self.peripherals.push(peripheral);
     }
 
@@ -16,7 +16,6 @@ impl<O> EventDispatcher<O> where O: Clone {
     }
 }
 
-pub trait EventHandler {
-    type Event;
-    fn event(&self, e: Self::Event);
+pub trait EventHandler<O> {
+    fn event(&self, e: O);
 }

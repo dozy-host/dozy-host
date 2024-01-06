@@ -1,18 +1,22 @@
 #![deny(clippy::use_self)]
 
-use crate::configuration::docker::{HttpDockerConfig, DockerConnectionConfig};
+use crate::configuration::docker::{HttpDockerConfig, DockerConnectionConfig, DockerConfig};
 
 mod configuration;
 mod docker;
 mod discord;
 mod host;
 mod event;
+mod mediator;
+mod communication;
 
 #[tokio::main]
 async fn main() {
     println!("Hello, world!");
 
     let token = std::env::var("DISCORD_TOKEN").expect("Expected a token in the environment");
+
+    println!("Token: {}", token);
 
     // Tls not working because of a "Bad Certificate" error
 
@@ -25,11 +29,15 @@ async fn main() {
 
     // let docker = docker_config.connect_with_ssl().unwrap();
 
-    let docker_config = HttpDockerConfig {
-        host: "tcp://cog.dragon-bortle.ts.net:2375".to_string(),
-    };
+    // let docker_config = HttpDockerConfig {
+    //     host: "tcp://cog.dragon-bortle.ts.net:2375".to_string(),
+    // };
+
+    let discord_client = discord::client::create_client(token).await;
+
+    let docker_config = DockerConfig::default();
 
     let docker = docker_config.connect().unwrap();
 
-    println!("{:?}", docker.version().await.unwrap().api_version);
+    println!("Docker connection successful, API version {:?}", docker.version().await.unwrap().api_version);
 }

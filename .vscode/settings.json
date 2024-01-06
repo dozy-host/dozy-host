@@ -2,6 +2,7 @@
     "rust-analyzer.showUnlinkedFileNotification": false,
     "rust-analyzer.check.command": "clippy",
     "cSpell.words": [
-        "bortle"
+        "bortle",
+        "BUILDKIT"
     ]
 }

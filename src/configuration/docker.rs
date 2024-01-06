@@ -13,6 +13,20 @@ pub struct DockerConfig {
     socket: String,
 }
 
+impl Default for DockerConfig {
+    fn default() -> Self {
+        Self {
+            socket: "unix:///var/run/docker.sock".to_string(),
+        }
+    }
+}
+
+impl DockerConnectionConfig for DockerConfig {
+    fn connect(&self) -> Result<Docker, bollard::errors::Error> {
+        Docker::connect_with_socket(&self.socket, 120, API_DEFAULT_VERSION)
+    }
+}
+
 pub struct HttpsDockerConfig {
     pub host: String,
     pub cert_path: PathBuf,

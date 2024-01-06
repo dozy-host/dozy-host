@@ -18,7 +18,7 @@ trait DiscordAdapter: Send + Sync {
     fn handle_interaction(&self, interaction: Interaction) -> Result<(), ()>;
 }
 
-async fn create_client() {
+pub async fn create_client(token: impl Into<String>) {
     let options = poise::FrameworkOptions {
         commands: vec![start()],
 
@@ -26,7 +26,7 @@ async fn create_client() {
     };
 
     poise::Framework::builder()
-        .token("N/A")
+        .token(token)
         .setup(move |ctx, ready, framework| {
             Box::pin(async move {
                 println!("Logged in as {}", ready.user.name);
@@ -47,5 +47,5 @@ async fn create_client() {
         .intents(GatewayIntents::non_privileged() | GatewayIntents::MESSAGE_CONTENT)
         .run()
         .await
-        .unwrap();
+        .unwrap()
 }
