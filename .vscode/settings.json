@@ -3,6 +3,7 @@
     "rust-analyzer.check.command": "clippy",
     "cSpell.words": [
         "bortle",
-        "BUILDKIT"
+        "BUILDKIT",
+        "builtins"
     ]
 }
