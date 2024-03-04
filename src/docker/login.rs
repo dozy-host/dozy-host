@@ -1,4 +1,3 @@
-use anyhow::Error;
 use bollard::Docker;
 
 pub fn connect_to_docker() -> anyhow::Result<Docker> {

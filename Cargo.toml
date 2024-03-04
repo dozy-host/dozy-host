@@ -3,6 +3,9 @@ name = "dozy-host"
 version = "0.1.0"
 edition = "2021"
 
+[features]
+env_credentials = [] # feature has no explicit dependencies
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
@@ -18,3 +21,4 @@ log = "0.4.19"
 poise = "0.5.5"
 serde = "1.0.179"
 tokio = "1.29.1"
+
