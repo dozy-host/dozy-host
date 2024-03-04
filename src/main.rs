@@ -1,5 +1,6 @@
 mod discord;
 mod docker;
+mod credentials;
 
 pub use discord::login;
 use log::info;

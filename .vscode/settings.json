@@ -1,6 +1,7 @@
 {
     "rust-analyzer.showUnlinkedFileNotification": false,
     "rust-analyzer.check.command": "clippy",
+    "rust-analyzer.cargo.features": ["env_credentials"],
     "cSpell.words": [
         "bortle",
         "BUILDKIT",

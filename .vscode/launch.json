@@ -12,7 +12,8 @@
                 "args": [
                     "build",
                     "--bin=dozy-host",
-                    "--package=dozy-host"
+                    "--package=dozy-host",
+                    "--features=env_credentials",
                 ],
                 "filter": {
                     "name": "dozy-host",

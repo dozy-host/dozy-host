@@ -3,7 +3,7 @@ use anyhow::Error;
 use poise::serenity_prelude::{self as serenity};
 
 pub async fn login(data: Data) -> Result<(), Error> {
-    let token = std::env::var("DISCORD_TOKEN").expect("missing DISCORD_TOKEN");
+    let token = crate::credentials::discord_token();
 
     poise::Framework::builder()
         .options(poise::FrameworkOptions {
